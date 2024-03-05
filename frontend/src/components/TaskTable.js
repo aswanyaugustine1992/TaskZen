@@ -34,7 +34,7 @@ export default function TaskTable({  searchTerm, filter }) {
   }, [tasks]);
 
   const fetchTasks = () => {
-    fetch('http://localhost:3001/api/tasks')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tasks`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch tasks');
@@ -86,7 +86,7 @@ export default function TaskTable({  searchTerm, filter }) {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3001/api/tasks/${currentRow._id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tasks/${currentRow._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function TaskTable({  searchTerm, filter }) {
       body: JSON.stringify(currentTask) 
     };
  
-    fetch(`http://localhost:3001/api/tasks/${currentTask._id}`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tasks/${currentTask._id}`, requestOptions)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

@@ -51,7 +51,7 @@ const HomePage = () => {
       body: JSON.stringify(newTask) 
     };
   
-    fetch('http://localhost:3001/api/tasks', requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/tasks`, requestOptions)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
